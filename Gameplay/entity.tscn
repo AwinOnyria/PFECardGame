@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8n31fkn2jgh4"]
+
+[ext_resource type="Script" path="res://Gameplay/entity.gd" id="1_c6fkl"]
+
+[node name="Entity" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_c6fkl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Image" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="EntityImage" type="Sprite2D" parent="VBoxContainer/Image"]

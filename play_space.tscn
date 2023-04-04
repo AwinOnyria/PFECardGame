@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5oypkrk0bc0i"]
+
+[ext_resource type="Script" path="res://play_space.gd" id="1_faloc"]
+[ext_resource type="Texture2D" uid="uid://cpjy7n2ttf8nr" path="res://Assets/Art/Backgrounds/background_capitalist_eco.jpg" id="1_ggn8o"]
+[ext_resource type="Texture2D" uid="uid://dtpdd162pn7aa" path="res://Cards/Card Borders/capitalist_deck.png" id="3_51fjd"]
+[ext_resource type="PackedScene" uid="uid://nu5wa3sciirs" path="res://GUI/bar.tscn" id="3_l8bi7"]
+[ext_resource type="Texture2D" uid="uid://cqfumlbjqgl5m" path="res://Cards/Card Borders/capitalist_deck_empty.png" id="4_qd8ej"]
+[ext_resource type="Script" path="res://DeckDraw.gd" id="5_gxjgs"]
+[ext_resource type="Texture2D" uid="uid://c2ioftkclghaq" path="res://Cards/Card Borders/outline_legal.png" id="6_7r01m"]
+
+[node name="PlaySpace" type="Node2D"]
+script = ExtResource("1_faloc")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ggn8o")
+
+[node name="UserInterface" type="VBoxContainer" parent="."]
+offset_right = 404.0
+offset_bottom = 40.0
+
+[node name="TopGap" type="MarginContainer" parent="UserInterface"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="MiddleBar" parent="UserInterface" instance=ExtResource("3_l8bi7")]
+layout_mode = 2
+
+[node name="Entities" type="HBoxContainer" parent="UserInterface"]
+layout_mode = 2
+
+[node name="MiddleGap" type="MarginContainer" parent="UserInterface/Entities"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Cards" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Deck" type="Node2D" parent="."]
+position = Vector2(32, 674)
+
+[node name="DeckDraw" type="TextureButton" parent="Deck"]
+offset_right = 500.0
+offset_bottom = 700.0
+texture_normal = ExtResource("3_51fjd")
+texture_pressed = ExtResource("3_51fjd")
+texture_hover = ExtResource("3_51fjd")
+texture_disabled = ExtResource("4_qd8ej")
+script = ExtResource("5_gxjgs")
+
+[node name="Outline" type="Sprite2D" parent="Deck"]
+texture = ExtResource("6_7r01m")
+centered = false
