@@ -1,12 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5oypkrk0bc0i"]
+[gd_scene load_steps=13 format=3 uid="uid://boo3ak13bjkb"]
 
 [ext_resource type="Script" path="res://play_space.gd" id="1_faloc"]
 [ext_resource type="Texture2D" uid="uid://cpjy7n2ttf8nr" path="res://Assets/Art/Backgrounds/background_capitalist_eco.jpg" id="1_ggn8o"]
 [ext_resource type="Texture2D" uid="uid://dtpdd162pn7aa" path="res://Cards/Card Borders/capitalist_deck.png" id="3_51fjd"]
 [ext_resource type="PackedScene" uid="uid://nu5wa3sciirs" path="res://GUI/bar.tscn" id="3_l8bi7"]
+[ext_resource type="Texture2D" uid="uid://hgiuck4g1y5b" path="res://Assets/Art/Entities/Eurocorp.png" id="4_0yp4r"]
 [ext_resource type="Texture2D" uid="uid://cqfumlbjqgl5m" path="res://Cards/Card Borders/capitalist_deck_empty.png" id="4_qd8ej"]
+[ext_resource type="Texture2D" uid="uid://bskwoq7qi68lq" path="res://Assets/Art/Entities/toitsu.png" id="5_5ee5v"]
 [ext_resource type="Script" path="res://DeckDraw.gd" id="5_gxjgs"]
 [ext_resource type="Texture2D" uid="uid://c2ioftkclghaq" path="res://Cards/Card Borders/outline_legal.png" id="6_7r01m"]
+[ext_resource type="Script" path="res://ShuffleCards.gd" id="8_ieehk"]
+[ext_resource type="Script" path="res://EndTurn.gd" id="10_k0tev"]
+[ext_resource type="Texture2D" uid="uid://r5wdjcbdjkbj" path="res://Assets/Art/Entities/placeholder.png" id="10_otmuv"]
 
 [node name="PlaySpace" type="Node2D"]
 script = ExtResource("1_faloc")
@@ -16,32 +21,172 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_ggn8o")
 
-[node name="UserInterface" type="VBoxContainer" parent="."]
-offset_right = 404.0
-offset_bottom = 40.0
+[node name="UIContainer" type="MarginContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 45.0
+size_flags_horizontal = 3
 
-[node name="TopGap" type="MarginContainer" parent="UserInterface"]
+[node name="UserInterface" type="VBoxContainer" parent="UIContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(1920, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="TopGap" type="MarginContainer" parent="UIContainer/UserInterface"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="MiddleBar" parent="UserInterface" instance=ExtResource("3_l8bi7")]
+[node name="MiddleBar" type="HBoxContainer" parent="UIContainer/UserInterface"]
+custom_minimum_size = Vector2(1920, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="LeftGap" type="MarginContainer" parent="UIContainer/UserInterface/MiddleBar"]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="Entities" type="HBoxContainer" parent="UserInterface"]
-layout_mode = 2
-
-[node name="MiddleGap" type="MarginContainer" parent="UserInterface/Entities"]
+[node name="MiddleContainer" type="MarginContainer" parent="UIContainer/UserInterface/MiddleBar"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="MiddleBar" parent="UIContainer/UserInterface/MiddleBar/MiddleContainer" instance=ExtResource("3_l8bi7")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="RightGap" type="MarginContainer" parent="UIContainer/UserInterface/MiddleBar"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="UIGap1" type="MarginContainer" parent="UIContainer/UserInterface"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="TopBars" type="HBoxContainer" parent="UIContainer/UserInterface"]
+layout_mode = 2
+
+[node name="LeftGap" type="MarginContainer" parent="UIContainer/UserInterface/TopBars"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="LeftBar" parent="UIContainer/UserInterface/TopBars" instance=ExtResource("3_l8bi7")]
+layout_mode = 2
+
+[node name="MiddleGap" type="MarginContainer" parent="UIContainer/UserInterface/TopBars"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightBar" parent="UIContainer/UserInterface/TopBars" instance=ExtResource("3_l8bi7")]
+layout_mode = 2
+
+[node name="RightGap" type="MarginContainer" parent="UIContainer/UserInterface/TopBars"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="UIGap2" type="MarginContainer" parent="UIContainer/UserInterface"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="MiddleBars" type="HBoxContainer" parent="UIContainer/UserInterface"]
+layout_mode = 2
+
+[node name="LeftGap" type="MarginContainer" parent="UIContainer/UserInterface/MiddleBars"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="LeftBar" parent="UIContainer/UserInterface/MiddleBars" instance=ExtResource("3_l8bi7")]
+layout_mode = 2
+
+[node name="MiddleGap" type="MarginContainer" parent="UIContainer/UserInterface/MiddleBars"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightBar" parent="UIContainer/UserInterface/MiddleBars" instance=ExtResource("3_l8bi7")]
+layout_mode = 2
+
+[node name="RightGap" type="MarginContainer" parent="UIContainer/UserInterface/MiddleBars"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="UIGap3" type="MarginContainer" parent="UIContainer/UserInterface"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="BottomBars" type="HBoxContainer" parent="UIContainer/UserInterface"]
+layout_mode = 2
+
+[node name="LeftGap" type="MarginContainer" parent="UIContainer/UserInterface/BottomBars"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="LeftBar" parent="UIContainer/UserInterface/BottomBars" instance=ExtResource("3_l8bi7")]
+layout_mode = 2
+
+[node name="MiddleGap" type="MarginContainer" parent="UIContainer/UserInterface/BottomBars"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightBar" parent="UIContainer/UserInterface/BottomBars" instance=ExtResource("3_l8bi7")]
+layout_mode = 2
+
+[node name="RightGap" type="MarginContainer" parent="UIContainer/UserInterface/BottomBars"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="UIGap4" type="MarginContainer" parent="UIContainer/UserInterface"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Logos" type="HBoxContainer" parent="UIContainer/UserInterface"]
+layout_mode = 2
+
+[node name="LeftGap" type="MarginContainer" parent="UIContainer/UserInterface/Logos"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="LeftLogoContainer" type="MarginContainer" parent="UIContainer/UserInterface/Logos"]
+layout_mode = 2
+
+[node name="LeftLogo" type="TextureRect" parent="UIContainer/UserInterface/Logos/LeftLogoContainer"]
+custom_minimum_size = Vector2(350, 400)
+layout_mode = 2
+texture = ExtResource("4_0yp4r")
+expand_mode = 1
+
+[node name="MiddleGap" type="MarginContainer" parent="UIContainer/UserInterface/Logos"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightLogoContainer" type="MarginContainer" parent="UIContainer/UserInterface/Logos"]
+layout_mode = 2
+
+[node name="RightLogo" type="TextureRect" parent="UIContainer/UserInterface/Logos/RightLogoContainer"]
+custom_minimum_size = Vector2(350, 400)
+layout_mode = 2
+texture = ExtResource("5_5ee5v")
+expand_mode = 1
+
+[node name="RightGap" type="MarginContainer" parent="UIContainer/UserInterface/Logos"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
 
 [node name="Cards" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 404.0
 
 [node name="Deck" type="Node2D" parent="."]
 position = Vector2(32, 674)
+
+[node name="ShuffleCards" type="TextureButton" parent="Deck"]
+offset_right = 500.0
+offset_bottom = 700.0
+texture_normal = ExtResource("4_qd8ej")
+texture_pressed = ExtResource("4_qd8ej")
+texture_hover = ExtResource("4_qd8ej")
+texture_disabled = ExtResource("3_51fjd")
+script = ExtResource("8_ieehk")
 
 [node name="DeckDraw" type="TextureButton" parent="Deck"]
 offset_right = 500.0
@@ -55,3 +200,15 @@ script = ExtResource("5_gxjgs")
 [node name="Outline" type="Sprite2D" parent="Deck"]
 texture = ExtResource("6_7r01m")
 centered = false
+
+[node name="Turn" type="Node2D" parent="."]
+
+[node name="EndTurn" type="TextureButton" parent="Turn"]
+offset_left = 1611.0
+offset_top = 858.0
+offset_right = 2811.0
+offset_bottom = 2058.0
+texture_normal = ExtResource("10_otmuv")
+script = ExtResource("10_k0tev")
+
+[node name="Outline" type="Sprite2D" parent="Turn"]

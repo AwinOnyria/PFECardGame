@@ -10,7 +10,8 @@ func _ready():
 
 func _gui_input(event):
 	if Input.is_action_just_released("leftclick"):
-		if DeckSize > 0:
+		if DeckSize > 0 and $"../.."/Cards.get_child_count() < $"../..".MAX_CARDS_HAND:
 			DeckSize = $"../..".DrawCard()
 			if DeckSize < 1:
 				disabled = true
+				visible = false

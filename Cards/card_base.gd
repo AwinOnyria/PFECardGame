@@ -2,12 +2,17 @@ extends MarginContainer
 
 @onready var CardDatabase = preload("res://Cards/CardDatabase.gd")
 @onready var CardDatabaseTemp = CardDatabase.new()
-var CardName = "StratRetreat"
+var CardName = "INVESTORS"
 @onready var CardInfo = CardDatabaseTemp.DATA[CardDatabaseTemp.get(CardName)]
 @onready var CardImg = str("res://Cards/Card Images/Placeholder.png")
 var CardSize = size
 var OrigScale = scale
 var CardPos = Vector2()
+
+var Cost = int()
+var Effect1 = Vector2i()
+var Effect2 = Vector2i()
+var Effect3 = Vector2i()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,17 +27,17 @@ func _ready():
 	$InPlayIndicator.scale *= CardSize/$Card.texture.get_size()*Vector2(.8, .8)
 	$InPlayIndicator.position += CardSize*.1
 	$InPlayIndicator.visible = false
-	var Cost = CardInfo[5]
 	var FullName = CardInfo[2]
 	var Effects = CardInfo[3]
+	Cost = CardInfo[5]
 	if CardInfo[4]:
 		$Illegal.visible = false
 	$Bars/TopBar/Cost/CenterContainer/Cost.text = str(Cost)
 	$Bars/TopBar/Name/CenterContainer/Name.text = FullName
 	$Bars/CardEffects/Effects/CenterContainer/Effects.text = Effects
-	var Effect1 = CardInfo[6]
-	var Effect2 = CardInfo[7]
-	var Effect3 = CardInfo[8]
+	Effect1 = CardInfo[6]
+	Effect2 = CardInfo[7]
+	Effect3 = CardInfo[8]
 
 
 enum {
@@ -45,15 +50,14 @@ enum {
 }
 
 var state = InHand
-var DRAWTIME = 1
-var ORGANISETIME = .5
-var ZOOMINGTIME = .2
-var INMOUSETIME = .1
+const DRAWTIME = 1
+const ORGANISETIME = .5
+const ZOOMINGTIME = .2
+const INMOUSETIME = .1
 var ZoomInSize = 1.25
 var ReorganiseNeighbours = true
 var NumberCardsHand = 0
 var CardNumb = 0
-var MoveNeighbourCardCheck = false
 
 var t = 0
 var setup = true
@@ -82,7 +86,7 @@ func _physics_process(delta):
 			else:
 				position = get_global_mouse_position() - CardSize / 2
 				rotation = 0
-			if get_global_mouse_position().y <= get_viewport().size.y * .5:
+			if get_global_mouse_position().y <= get_viewport().size.y * .5 and $"../..".energy >= Cost:
 				if not CanPlay:
 					CanPlay = true
 					$InPlayIndicator.visible = true
@@ -124,22 +128,10 @@ func _physics_process(delta):
 			if setup:
 				Setup()
 			if t <= 1:
-				if MoveNeighbourCardCheck:
-					MoveNeighbourCardCheck = false
 				position = startpos.lerp(targetpos, t)
 				rotation = startrot * (1 - t) + targetrot * t
 				scale = startscale * (1 - t) + OrigScale * t
 				t += delta/float(ORGANISETIME)
-#				if not ReorganiseNeighbours:
-#					ReorganiseNeighbours = true
-#					if CardNumb - 1 >= 0:
-#						ResetNeighbourCard(CardNumb - 1)
-#					if CardNumb - 2 >= 0:
-#						ResetNeighbourCard(CardNumb - 2)
-#					if CardNumb + 1 <= NumberCardsHand:
-#						ResetNeighbourCard(CardNumb + 1)
-#					if CardNumb + 2 <= NumberCardsHand:
-#						ResetNeighbourCard(CardNumb + 2)
 			else:
 				position = targetpos
 				rotation = targetrot
@@ -157,16 +149,15 @@ func _input(event):
 				CardSelect = false
 			if event.is_action_released("leftclick"):
 				if CanPlay:
-					$"../..".delete_card(CardNumb)
-				else:
-					targetpos = CardPos
-					setup = true
-					state = ReorganiseHand
-					CardSelect = true
-					CanPlay = false
-					$InPlayIndicator.restart()
-					$InPlayIndicator.visible = false
-					z_index = 0
+					$"../..".play_card(CardNumb)
+				targetpos = CardPos
+				setup = true
+				state = ReorganiseHand
+				CardSelect = true
+				CanPlay = false
+				$InPlayIndicator.restart()
+				$InPlayIndicator.visible = false
+				z_index = 0
 
 
 func Setup():

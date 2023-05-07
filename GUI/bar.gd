@@ -1,54 +1,50 @@
 extends HBoxContainer
 
-var CHANGETIME = 2
-var FrontColor = Color()
-var BackgroundColor = Color()
-var ChangeColor = Color()
-var BorderColor = Color()
-var MaxValue = 0
-var Value = 0
+var CHANGETIME = .5
+var fill_color = Color()
+var background_color = Color()
+var change_color = Color()
+var border_color = Color()
+var max_value = 0
+var value = 0
+var bar_name = ""
 var left_to_right = true
+var is_middle_bar = false
 
 enum {
-	Still,
-	Increasing,
-	Decreasing
+	STILL,
+	INCREASING,
+	DECREASING
 }
-var state = Still
+var state = STILL
 var t = 0
 var setup_change = true
 var old_value = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+#	setup()
+
+	max_value = 100
+	value = 50
+	fill_color = Color(.8, .7, 0, 1)
+	change_color = Color(1, 1, 0, 1)
+	border_color = Color(1, 1, .8, 1)
 	setup()
-	
-	MaxValue = 100
-	Value = 50
-	FrontColor = Color(.8, .7, 0, 1)
-	ChangeColor = Color(1, 1, 0, 1)
-	BorderColor = Color(1, 1, .8, 1)
-	left_to_right = false
-	setup()
-#
-	Value = 80
-	state = Increasing
-##	Value = 20
-##	state = Decreasing
 	
 	pass
 
 func setup():
-	state = Still
+	state = STILL
 	
 	$Bars/ProgressBar.size.y = max($Bars/ChangeBar.size.y, $Bars/ProgressBar.size.y)
 	$Bars/ChangeBar.size.y = max($Bars/ChangeBar.size.y, $Bars/ProgressBar.size.y)
-	
-	$Bars/ProgressBar.max_value = MaxValue
-	$Bars/ProgressBar.value = Value
+		
+	$Bars/ProgressBar.max_value = max_value
+	$Bars/ProgressBar.value = value
 	var new_style_progress_fill = StyleBoxFlat.new()
-	new_style_progress_fill.bg_color = FrontColor
-	new_style_progress_fill.border_color = BorderColor
+	new_style_progress_fill.bg_color = fill_color
+	new_style_progress_fill.border_color = border_color
 	if left_to_right:
 		new_style_progress_fill.border_width_left = 3
 	else:
@@ -57,11 +53,11 @@ func setup():
 	new_style_progress_fill.border_width_top = 3
 	$Bars/ProgressBar.add_theme_stylebox_override("fill", new_style_progress_fill)
 	
-	$Bars/ChangeBar.max_value = MaxValue
-	$Bars/ChangeBar.value = Value
+	$Bars/ChangeBar.max_value = max_value
+	$Bars/ChangeBar.value = value
 	var new_style_change_fill = StyleBoxFlat.new()
-	new_style_change_fill.bg_color = ChangeColor
-	new_style_change_fill.border_color = BorderColor
+	new_style_change_fill.bg_color = change_color
+	new_style_change_fill.border_color = border_color
 	if left_to_right:
 		new_style_change_fill.border_width_left = 3
 	else:
@@ -73,64 +69,48 @@ func setup():
 	if not left_to_right:
 		$Bars/ChangeBar.fill_mode = 1
 		$Bars/ProgressBar.fill_mode = 1
+		
+	if is_middle_bar:
+		$Bars/ChangeBar.visible = false
 
-func _update_animation(delta):
+func update_animation(delta):
 	match state:
-		Still:
-			print("still")
-		Increasing:
-			print("hello")
+		STILL:
+			if not setup_change:
+				setup_change = true
+			else:
+				pass
+		INCREASING:
 			if setup_change:
-				$Bars/ChangeBar.value = Value
+				$Bars/ChangeBar.value = value
 				old_value = $Bars/ProgressBar.value
 				setup_change = false
 			if t <= 1:
-				$Bars/ProgressBar.value = old_value * (1 - t) + Value * t
+				$Bars/ProgressBar.value = old_value * (1 - t) + value * t
 				t += delta/CHANGETIME
 			else:
-				$Bars/ProgressBar.value = Value
-				state = Still
+				$Bars/ProgressBar.value = value
+				state = STILL
 				t = 0
-		Decreasing:
+		DECREASING:
 			if setup_change:
-				$Bars/ProgressBar.value = Value
+				if not is_middle_bar:
+					$Bars/ProgressBar.value = value
 				old_value = $Bars/ChangeBar.value
 				setup_change = false
 			if t <= 1:
-				$Bars/ChangeBar.value = old_value * (1 - t) + Value * t
+				if is_middle_bar:
+					$Bars/ProgressBar.value = old_value * (1 - t) + value * t
+				else:
+					$Bars/ChangeBar.value = old_value * (1 - t) + value * t
 				t += delta/CHANGETIME
 			else:
-				$Bars/ChangeBar.value = Value
-				state = Still
+				$Bars/ChangeBar.value = value
+				if is_middle_bar:
+					$Bars/ProgressBar.value = value
+				state = STILL
 				t = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	match state:
-		Still:
-			print("still")
-		Increasing:
-			print("hello")
-			if setup_change:
-				$Bars/ChangeBar.value = Value
-				old_value = $Bars/ProgressBar.value
-				setup_change = false
-			if t <= 1:
-				$Bars/ProgressBar.value = old_value * (1 - t) + Value * t
-				t += delta/CHANGETIME
-			else:
-				$Bars/ProgressBar.value = Value
-				state = Still
-				t = 0
-		Decreasing:
-			if setup_change:
-				$Bars/ProgressBar.value = Value
-				old_value = $Bars/ChangeBar.value
-				setup_change = false
-			if t <= 1:
-				$Bars/ChangeBar.value = old_value * (1 - t) + Value * t
-				t += delta/CHANGETIME
-			else:
-				$Bars/ChangeBar.value = Value
-				state = Still
-				t = 0
+	update_animation(delta)

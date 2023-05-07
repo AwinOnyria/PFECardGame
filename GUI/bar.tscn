@@ -7,8 +7,8 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Bar" type="HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
-offset_right = 614.0
-offset_bottom = 364.0
+offset_right = 404.0
+offset_bottom = 27.0
 size_flags_horizontal = 3
 script = ExtResource("1_m7vx7")
 
@@ -31,14 +31,16 @@ offset_bottom = 31.0
 
 [node name="Bars" type="MarginContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="ChangeBar" type="ProgressBar" parent="Bars"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0)
 
 [node name="ProgressBar" type="ProgressBar" parent="Bars"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 0)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_j73nb")

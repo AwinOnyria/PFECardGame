@@ -21,6 +21,12 @@ var OvalAngleVector = Vector2()
 var middle_bar = true
 
 enum {
+	STILL,
+	INCREASING,
+	DECREASING
+}
+
+enum {
 	InHand,
 	InMouse,
 	FocusInhand,
@@ -29,11 +35,30 @@ enum {
 	ReorganiseHand
 }
 
+var max_energy = INF
+var energy = INF
+var special_effects = {"energy": 0, "spying": 0, "covering": 0}
+var discarded_cards = []
+
+const MAX_CARDS_HAND = 5
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
 	$Deck/Outline.scale *= CardSize/$Deck/Outline.texture.get_size()
 	$Cards.size = Vector2(get_viewport_rect().size)
+	$UIContainer/UserInterface/BottomBars/RightBar.left_to_right = false
+	$UIContainer/UserInterface/BottomBars/RightBar.setup()
+	$UIContainer/UserInterface/MiddleBars/RightBar.left_to_right = false
+	$UIContainer/UserInterface/MiddleBars/RightBar.setup()
+	$UIContainer/UserInterface/TopBars/RightBar.left_to_right = false
+	$UIContainer/UserInterface/TopBars/RightBar.setup()
+	
+	if middle_bar:
+		$UIContainer/UserInterface/TopBars.visible = false
+		$UIContainer/UserInterface/UIGap1.visible = false
+	else:
+		$UIContainer/UserInterface/MiddleBar.visible = false
 
 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,10 +100,91 @@ func organise_hand():
 		CardNumb += 1
 
 
-func delete_card(no_card):
-	print(no_card)
+func play_card(no_card):
 	var Card = $Cards.get_child(no_card)
-	$Cards.remove_child(Card)
-	Card.queue_free()
-	NumberCardsHand -= 1
-	organise_hand()
+	if Card.Cost <= energy:
+		energy = energy - Card.Cost
+		discarded_cards.append(Card.CardName)
+		if Card.Effect1:
+			if middle_bar:
+				$UIContainer/UserInterface/MiddleBar/MiddleContainer/MiddleBar.value += Card.Effect1.x
+				if Card.Effect1.x > 0:
+					$UIContainer/UserInterface/MiddleBar/MiddleContainer/MiddleBar.state = INCREASING
+				else:
+					$UIContainer/UserInterface/MiddleBar/MiddleContainer/MiddleBar.state = DECREASING
+			else:
+				$UIContainer/UserInterface/TopBars/LeftBar.value += Card.Effect1.x
+				$UIContainer/UserInterface/TopBars/RightBar.value += Card.Effect1.y
+				if Card.Effect1.x > 0:
+					$UIContainer/UserInterface/TopBars/LeftBar.state = INCREASING
+				elif Card.Effect1.x < 0:
+					$UIContainer/UserInterface/TopBars/LeftBar.state = DECREASING
+				if Card.Effect1.y > 0:
+					$UIContainer/UserInterface/TopBars/RightBar.state = INCREASING
+				elif Card.Effect1.y < 0:
+					$UIContainer/UserInterface/TopBars/RightBar.state = DECREASING
+		if Card.Effect2:
+			$UIContainer/UserInterface/MiddleBars/LeftBar.value += Card.Effect2.x
+			$UIContainer/UserInterface/MiddleBars/RightBar.value += Card.Effect2.y
+			if Card.Effect2.x > 0:
+				$UIContainer/UserInterface/MiddleBars/LeftBar.state = INCREASING
+			elif Card.Effect2.x < 0:
+				$UIContainer/UserInterface/MiddleBars/LeftBar.state = DECREASING
+			if Card.Effect2.y > 0:
+				$UIContainer/UserInterface/MiddleBars/RightBar.state = INCREASING
+			elif Card.Effect2.y < 0:
+				$UIContainer/UserInterface/MiddleBars/RightBar.state = DECREASING
+		if Card.Effect3:
+			$UIContainer/UserInterface/BottomBars/LeftBar.value += Card.Effect3.x
+			$UIContainer/UserInterface/BottomBars/RightBar.value += Card.Effect3.y
+			if Card.Effect3.x > 0:
+				$UIContainer/UserInterface/BottomBars/LeftBar.state = INCREASING
+			elif Card.Effect3.x < 0:
+				$UIContainer/UserInterface/BottomBars/LeftBar.state = DECREASING
+			if Card.Effect3.y > 0:
+				$UIContainer/UserInterface/BottomBars/RightBar.state = INCREASING
+			elif Card.Effect3.y < 0:
+				$UIContainer/UserInterface/BottomBars/RightBar.state = DECREASING
+		
+		$Cards.remove_child(Card)
+		Card.queue_free()
+		NumberCardsHand -= 1
+		organise_hand()
+		check_game_status()
+
+
+func end_turn():
+	#make the ennemy act
+	check_game_status()
+	energy = max_energy
+
+
+func shuffle_cards():
+	Deck = discarded_cards.duplicate()
+	DeckSize = Deck.size()
+	$Deck/DeckDraw.DeckSize = DeckSize
+	if DeckSize:
+		$Deck/DeckDraw.disabled = false
+		$Deck/DeckDraw.visible = true
+	discarded_cards = []
+
+func check_game_status():
+	if middle_bar:
+		if $UIContainer/UserInterface/MiddleBar/MiddleContainer/MiddleBar.value == 0:
+			print("Game Lost")
+		if  $UIContainer/UserInterface/MiddleBar/MiddleContainer/MiddleBar.value >= $UIContainer/UserInterface/MiddleBar/MiddleContainer/MiddleBar.max_value:
+			print("Game Won")
+	else:
+		if $UIContainer/UserInterface/TopBars/LeftBar.value == 0:
+			print("Game Lost")
+		if $UIContainer/UserInterface/TopBars/RightBar.value == 0:
+			print("Game Won")
+	if $UIContainer/UserInterface/BottomBars/LeftBar.value == 0:
+		print("Game Lost")
+	if $UIContainer/UserInterface/BottomBars/RightBar.value == 0:
+		print("Game Won")
+	if $UIContainer/UserInterface/MiddleBars/LeftBar.value == 0:
+		print("Game Lost")
+	if $UIContainer/UserInterface/MiddleBars/RightBar.value == 0:
+		print("Game Won")
+	
