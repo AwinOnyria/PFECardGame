@@ -20,12 +20,12 @@ enum {
 const DATA = {
 	INVESTORS:
 		["capitalist", "INVESTORS", "Nouveaux investisseurs !", 
-			"Augmente les\nressources économiques\nDiminue la cohésion", true, 1, Vector2i(0, 0), 
+			"Augmente les\nressources économiques\nDiminue la cohésion", true, 1, Vector2i(+100, 0), 
 			Vector2i(+10, 0), Vector2i(-10, 0)],
 	RETREAT:
 		["capitalist", "RETREAT", "Retraite stratégique", 
 			"Augmente les\nressources économiques\nDiminue les parts\nde marché", true, 2, 
-			Vector2i(-10, 0), Vector2i(+10, 0), Vector2i(0, 0)],
+			Vector2i(-100, 0), Vector2i(+10, 0), Vector2i(0, 0)],
 	ADS:
 		["capitalist", "ADS", "Campagne publicitaire", 
 			"Augmente les\nparts de marché\nDiminue les ressources\néconomiques", true, 1, 

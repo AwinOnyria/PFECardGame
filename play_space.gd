@@ -3,6 +3,7 @@ extends Node2D
 
 const CardBase = preload("res://Cards/card_base.tscn")
 const PlayerHand = preload("res://Gameplay/Player_Hand.gd")
+const GameOverScreen = preload("res://GUI/game_over_screen.tscn")
 const CardSize = Vector2(250, 350)
 var CardSelected
 @onready var DeckSize = PlayerHand.Deck.size()
@@ -170,21 +171,37 @@ func shuffle_cards():
 
 func check_game_status():
 	if middle_bar:
-		if $UIContainer/UserInterface/MiddleBar/MiddleContainer/MiddleBar.value == 0:
-			print("Game Lost")
+		if $UIContainer/UserInterface/MiddleBar/MiddleContainer/MiddleBar.value <= 0:
+			handle_player_lose()
 		if  $UIContainer/UserInterface/MiddleBar/MiddleContainer/MiddleBar.value >= $UIContainer/UserInterface/MiddleBar/MiddleContainer/MiddleBar.max_value:
-			print("Game Won")
+			handle_player_win()
 	else:
-		if $UIContainer/UserInterface/TopBars/LeftBar.value == 0:
-			print("Game Lost")
-		if $UIContainer/UserInterface/TopBars/RightBar.value == 0:
-			print("Game Won")
-	if $UIContainer/UserInterface/BottomBars/LeftBar.value == 0:
-		print("Game Lost")
-	if $UIContainer/UserInterface/BottomBars/RightBar.value == 0:
-		print("Game Won")
-	if $UIContainer/UserInterface/MiddleBars/LeftBar.value == 0:
-		print("Game Lost")
-	if $UIContainer/UserInterface/MiddleBars/RightBar.value == 0:
-		print("Game Won")
+		if $UIContainer/UserInterface/TopBars/LeftBar.value <= 0:
+			handle_player_lose()
+		if $UIContainer/UserInterface/TopBars/RightBar.value <= 0:
+			handle_player_win()
+	if $UIContainer/UserInterface/BottomBars/LeftBar.value <= 0:
+		handle_player_lose()
+	if $UIContainer/UserInterface/BottomBars/RightBar.value <= 0:
+		handle_player_win()
+	if $UIContainer/UserInterface/MiddleBars/LeftBar.value <= 0:
+		handle_player_lose()
+	if $UIContainer/UserInterface/MiddleBars/RightBar.value <= 0:
+		handle_player_win()
 	
+
+func handle_player_win():
+	await get_tree().create_timer(1).timeout
+	get_tree().paused = true
+	var game_over = GameOverScreen.instantiate()
+	add_child(game_over)
+	game_over.set_title(true)
+
+
+func handle_player_lose():
+	await get_tree().create_timer(1).timeout
+	get_tree().paused = true
+	var game_over = GameOverScreen.instantiate()
+	add_child(game_over)
+	game_over.set_title(false)
+
