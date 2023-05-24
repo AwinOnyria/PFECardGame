@@ -12,6 +12,7 @@ enum {
 	FAKE_NEWS,
 	SELL_STOCKS,
 	HIRING_CAMPAIGN,
+	TEAM_COHESION,
 	CORPORATE_SPYING,
 	LAYOFFS,
 	OUTSOURCING
@@ -20,12 +21,12 @@ enum {
 const DATA = {
 	INVESTORS:
 		["capitalist", "INVESTORS", "Nouveaux investisseurs !", 
-			"Augmente les\nressources économiques\nDiminue la cohésion", true, 1, Vector2i(+100, 0), 
-			Vector2i(+10, 0), Vector2i(-10, 0)],
+			"Augmente les\nressources économiques", true, 1, Vector2i(0, 0), 
+			Vector2i(+10, 0), Vector2i(0, 0)],
 	RETREAT:
 		["capitalist", "RETREAT", "Retraite stratégique", 
-			"Augmente les\nressources économiques\nDiminue les parts\nde marché", true, 2, 
-			Vector2i(-100, 0), Vector2i(+10, 0), Vector2i(0, 0)],
+			"Augmente les\nressources économiques\nDiminue les parts\nde marché", true, 1, 
+			Vector2i(-10, 0), Vector2i(+10, 0), Vector2i(0, 0)],
 	ADS:
 		["capitalist", "ADS", "Campagne publicitaire", 
 			"Augmente les\nparts de marché\nDiminue les ressources\néconomiques", true, 1, 
@@ -33,15 +34,15 @@ const DATA = {
 	TAX_FRAUD:
 		["capitalist", "TAX_FRAUD", "Évasion fiscale", 
 			"Augmente les\nressources économiques\nDiminue la cohésion", false, 2, 
-			Vector2i(0, 0), Vector2i(+10, 0), Vector2i(-5, 0)],
+			Vector2i(0, 0), Vector2i(+15, 0), Vector2i(-5, 0)],
 	LOWER_PRICES:
 		["capitalist", "LOWER_PRICES", "Baisse des prix",
-			"Augmente les\nparts de marché\nDiminue les\nressources économiques", true, 1, 
+			"Augmente les\nparts de marché\nDiminue les\nressources économiques", true, 2, 
 			Vector2i(+10, 0), Vector2i(-15, 0), Vector2i(0, 0)],
 	FAKE_NEWS:
 		["capitalist", "FAKE_NEWS", "Campagne de Diffamation", 
 			"Augmente les\nparts de marché\nDiminue les\nressources économiques\nDiminue la\ncohésion adverse", 
-			false, 2, Vector2i(+5, 0), Vector2i(-10, 0), Vector2i(0, -10)],
+			false, 2, Vector2i(+10, 0), Vector2i(-10, 0), Vector2i(0, -10)],
 	SELL_STOCKS:
 		["capitalist", "SELL_STOCKS", "Vente d'actifs",
 			"Diminue les\nparts de marché\nAugmente les\nressources économiques\nDiminue la\ncohésion",
@@ -62,4 +63,8 @@ const DATA = {
 		["capitalist", "CORPORATE_SPYING", "Espionnage industriel",
 			"Diminue les\nressources économiques\nPermet de voir\nles actions adverses\npendant 3 tours",
 			false, 2, Vector2i(0, 0), Vector2i(-10, 0), Vector2i(0, 0)],
+	TEAM_COHESION:
+		["capitalist", "TEAM_COHESION", "Team building",
+			"Augmente la\ncohésion",
+			true, 1, Vector2i(0, 0), Vector2i(0, 0), Vector2i(+10, 0)],
 }

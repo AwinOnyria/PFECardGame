@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfu4wp15t3tyh"]
+
+[ext_resource type="FontFile" uid="uid://dpdihmogvfrbg" path="res://Assets/font/Comfortaa-Bold.ttf" id="1_4ng2c"]
+[ext_resource type="Script" path="res://Narrative/narrative_button.gd" id="1_u7ayg"]
+
+[node name="NarrativeButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("1_4ng2c")
+theme_override_font_sizes/font_size = 40
+text = "eztzeheziohzeoifjez"
+script = ExtResource("1_u7ayg")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

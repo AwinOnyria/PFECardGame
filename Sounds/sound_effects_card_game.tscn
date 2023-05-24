@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://vi6itqmoritj"]
+
+[ext_resource type="Script" path="res://Sounds/sound_effects_card_game.gd" id="1_43k8h"]
+[ext_resource type="AudioStream" uid="uid://6qvqcixt2hxu" path="res://Assets/sounds/economic-conflict-them.wav" id="2_lhdf0"]
+[ext_resource type="AudioStream" uid="uid://bxfn2g8t0pi86" path="res://Assets/sounds/capitalist-card.mp3" id="3_cbkgm"]
+[ext_resource type="AudioStream" uid="uid://ba8frhn77vnny" path="res://Assets/sounds/card-draw.wav" id="3_noj4f"]
+[ext_resource type="AudioStream" uid="uid://c2w8v56lax4pc" path="res://Assets/sounds/deck-shuffle.ogg" id="4_t2mf4"]
+
+[node name="SoundEffectsCardGame" type="Node"]
+script = ExtResource("1_43k8h")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_lhdf0")
+volume_db = -7.0
+
+[node name="DrawingCard" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_noj4f")
+
+[node name="ShufflingDeck" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_t2mf4")
+
+[node name="PlayingCard" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_cbkgm")

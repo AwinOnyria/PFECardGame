@@ -4,7 +4,7 @@ extends MarginContainer
 @onready var CardDatabaseTemp = CardDatabase.new()
 var CardName = "INVESTORS"
 @onready var CardInfo = CardDatabaseTemp.DATA[CardDatabaseTemp.get(CardName)]
-@onready var CardImg = str("res://Cards/Card Images/Placeholder.png")
+@onready var CardImg = str("res://Cards/Card Images/" + CardName + ".png")
 var CardSize = size
 var OrigScale = scale
 var CardPos = Vector2()
@@ -14,13 +14,19 @@ var Effect1 = Vector2i()
 var Effect2 = Vector2i()
 var Effect3 = Vector2i()
 
+var is_special = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	print(CardInfo)
-	var CardSize = size
+	CardSize = size
+	$Glow.visible = is_special
 	$Border.scale *= CardSize/$Border.texture.get_size()
 	$Card.texture = load(CardImg)
 	$Card.scale *= CardSize/$Card.texture.get_size()
+	$Glow.scale *= CardSize/$Glow/GlowSprite.texture.get_size() * Vector2(15, 1)
+	$Card.scale.y *= .6
+	$Card.scale.x *= .85
+	$Card.position.x += CardSize.x * .075
 	$Outline.scale *= CardSize/$Outline.texture.get_size()
 	$Illegal.scale *= CardSize/$Illegal.texture.get_size()
 	$CardBack.scale *= CardSize/$CardBack.texture.get_size()
@@ -50,7 +56,7 @@ enum {
 }
 
 var state = InHand
-const DRAWTIME = 1
+const DRAWTIME = .75
 const ORGANISETIME = .5
 const ZOOMINGTIME = .2
 const INMOUSETIME = .1

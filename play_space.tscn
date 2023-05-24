@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://boo3ak13bjkb"]
+[gd_scene load_steps=15 format=3 uid="uid://dyvvxuwq8tw7c"]
 
 [ext_resource type="Script" path="res://play_space.gd" id="1_faloc"]
 [ext_resource type="Texture2D" uid="uid://cpjy7n2ttf8nr" path="res://Assets/Art/Backgrounds/background_capitalist_eco.jpg" id="1_ggn8o"]
+[ext_resource type="PackedScene" uid="uid://vi6itqmoritj" path="res://Sounds/sound_effects_card_game.tscn" id="2_ssyrd"]
 [ext_resource type="Texture2D" uid="uid://dtpdd162pn7aa" path="res://Cards/Card Borders/capitalist_deck.png" id="3_51fjd"]
 [ext_resource type="PackedScene" uid="uid://nu5wa3sciirs" path="res://GUI/bar.tscn" id="3_l8bi7"]
 [ext_resource type="Texture2D" uid="uid://hgiuck4g1y5b" path="res://Assets/Art/Entities/Eurocorp.png" id="4_0yp4r"]
@@ -9,12 +10,22 @@
 [ext_resource type="Texture2D" uid="uid://bskwoq7qi68lq" path="res://Assets/Art/Entities/toitsu.png" id="5_5ee5v"]
 [ext_resource type="Script" path="res://DeckDraw.gd" id="5_gxjgs"]
 [ext_resource type="Texture2D" uid="uid://c2ioftkclghaq" path="res://Cards/Card Borders/outline_legal.png" id="6_7r01m"]
-[ext_resource type="Script" path="res://ShuffleCards.gd" id="8_ieehk"]
-[ext_resource type="Script" path="res://EndTurn.gd" id="10_k0tev"]
-[ext_resource type="Texture2D" uid="uid://r5wdjcbdjkbj" path="res://Assets/Art/Entities/placeholder.png" id="10_otmuv"]
+[ext_resource type="Script" path="res://Gameplay/Buttons.gd" id="14_8628t"]
+[ext_resource type="FontFile" uid="uid://dpdihmogvfrbg" path="res://Assets/font/Comfortaa-Bold.ttf" id="15_t2x2t"]
+
+[sub_resource type="Gradient" id="Gradient_iotc5"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yswik"]
+gradient = SubResource("Gradient_iotc5")
+width = 1920
+height = 1080
+fill_from = Vector2(0.0137615, 0.0163099)
 
 [node name="PlaySpace" type="Node2D"]
 script = ExtResource("1_faloc")
+
+[node name="SoundEffects" parent="." instance=ExtResource("2_ssyrd")]
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0
@@ -179,15 +190,6 @@ offset_right = 404.0
 [node name="Deck" type="Node2D" parent="."]
 position = Vector2(32, 674)
 
-[node name="ShuffleCards" type="TextureButton" parent="Deck"]
-offset_right = 500.0
-offset_bottom = 700.0
-texture_normal = ExtResource("4_qd8ej")
-texture_pressed = ExtResource("4_qd8ej")
-texture_hover = ExtResource("4_qd8ej")
-texture_disabled = ExtResource("3_51fjd")
-script = ExtResource("8_ieehk")
-
 [node name="DeckDraw" type="TextureButton" parent="Deck"]
 offset_right = 500.0
 offset_bottom = 700.0
@@ -201,14 +203,49 @@ script = ExtResource("5_gxjgs")
 texture = ExtResource("6_7r01m")
 centered = false
 
-[node name="Turn" type="Node2D" parent="."]
+[node name="Buttons" type="MarginContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1670.0
+offset_top = 830.0
+offset_right = 1870.0
+offset_bottom = 1180.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("14_8628t")
 
-[node name="EndTurn" type="TextureButton" parent="Turn"]
-offset_left = 1611.0
-offset_top = 858.0
-offset_right = 2811.0
-offset_bottom = 2058.0
-texture_normal = ExtResource("10_otmuv")
-script = ExtResource("10_k0tev")
+[node name="Rows" type="VBoxContainer" parent="Buttons"]
+layout_mode = 2
+theme_override_constants/separation = 100
 
-[node name="Outline" type="Sprite2D" parent="Turn"]
+[node name="EndTurn" type="Button" parent="Buttons/Rows"]
+layout_mode = 2
+text = "Finir le tour
+ "
+
+[node name="Discard" type="Button" parent="Buttons/Rows"]
+layout_mode = 2
+text = "Défausser ses cartes
+coût : 1"
+
+[node name="Energy" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 1038.0
+offset_right = 136.0
+offset_bottom = 1061.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("15_t2x2t")
+text = "Énergie : 3/3"
+
+[node name="Blocker" type="TextureRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 0
+texture = SubResource("GradientTexture2D_yswik")
+
+[connection signal="pressed" from="Buttons/Rows/EndTurn" to="Buttons" method="_on_end_turn_pressed"]
+[connection signal="pressed" from="Buttons/Rows/Discard" to="Buttons" method="_on_discard_pressed"]

@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl3qdts7h26by"]
+[gd_scene load_steps=10 format=3 uid="uid://bl3qdts7h26by"]
 
 [ext_resource type="Script" path="res://GUI/game_over_screen.gd" id="1_xjcoa"]
 [ext_resource type="FontFile" uid="uid://tyg6fknbvsyq" path="res://Assets/font/Comfortaa-Bold_90.ttf" id="2_qn4pj"]
 [ext_resource type="FontFile" uid="uid://dpdihmogvfrbg" path="res://Assets/font/Comfortaa-Bold.ttf" id="3_52q3y"]
+[ext_resource type="AudioStream" uid="uid://dtt8q5hpjll1b" path="res://Assets/sounds/capitalist-defeat.mp3" id="4_3l2l7"]
+[ext_resource type="AudioStream" uid="uid://d2u8ghv0olgfj" path="res://Assets/sounds/capitalist-victory.mp3" id="5_cbn8o"]
+[ext_resource type="Texture2D" uid="uid://dnp77nwewxc3v" path="res://Assets/Art/Entities/output-onlinegiftools.png" id="6_lwc5y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyohn"]
 bg_color = Color(0.239216, 0.196078, 0.2, 1)
@@ -11,6 +14,28 @@ border_width_top = 10
 border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_8lxy3"]
+resource_name = "penguin_dance"
+length = 0.92
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Penguin:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64, 0.68, 0.72, 0.76, 0.8, 0.84, 0.88),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r63fy"]
+_data = {
+"penguin_dance": SubResource("Animation_8lxy3")
+}
 
 [node name="GameOverScreen" type="CanvasLayer"]
 process_mode = 3
@@ -60,6 +85,26 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_52q3y")
 theme_override_font_sizes/font_size = 60
 text = "   QUIT GAME   "
+
+[node name="LoseMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3l2l7")
+
+[node name="WinMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_cbn8o")
+
+[node name="Penguin" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(345, 537)
+scale = Vector2(2, 2)
+texture = ExtResource("6_lwc5y")
+hframes = 23
+frame = 15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 1.3
+libraries = {
+"": SubResource("AnimationLibrary_r63fy")
+}
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyaq1mglgaxwh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uap7c"]
+bg_color = Color(0.584314, 0.584314, 0.584314, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[node name="TooltipPopup" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uap7c")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Test etedeer [/center]"

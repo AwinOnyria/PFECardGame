@@ -1,0 +1,1225 @@
+[gd_scene load_steps=6 format=3 uid="uid://byktk2g0wto51"]
+
+[ext_resource type="Script" path="res://Narrative/narrative_scene.gd" id="1_m2w15"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_efwkr"]
+bg_color = Color(0.380392, 0.341176, 0.341176, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.145098, 0.129412, 0.129412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0ye6"]
+bg_color = Color(0.223529, 0.196078, 0.196078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14g5i"]
+bg_color = Color(0.262745, 0.231373, 0.231373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_358nm"]
+bg_color = Color(0.223529, 0.196078, 0.196078, 1)
+
+[node name="NarrativeScene" type="CanvasLayer"]
+script = ExtResource("1_m2w15")
+
+[node name="Background" type="PanelContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_efwkr")
+
+[node name="Columns" type="HBoxContainer" parent="Background"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LeftContainer" type="PanelContainer" parent="Background/Columns"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l0ye6")
+
+[node name="Rows" type="VBoxContainer" parent="Background/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Title" type="PanelContainer" parent="Background/Columns/Rows"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_14g5i")
+
+[node name="TitleText" type="RichTextLabel" parent="Background/Columns/Rows/Title"]
+layout_mode = 2
+
+[node name="Core" type="ScrollContainer" parent="Background/Columns/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CoreText" type="RichTextLabel" parent="Background/Columns/Rows/Core"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+A
+izv pzoeqihvczeogbv zêpdgv4ze
+govz
+)g $ve
+z$dg ikrsad$g 
+\"ræßðv \"zsg 
+er
+0
+"
+
+[node name="ButtonContainer" type="CenterContainer" parent="Background/Columns/Rows"]
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="Background/Columns/Rows/ButtonContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="RightContainer" type="PanelContainer" parent="Background/Columns"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_358nm")
