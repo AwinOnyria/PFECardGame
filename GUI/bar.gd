@@ -10,6 +10,7 @@ var value = 0
 var bar_name = ""
 var left_to_right = true
 var is_middle_bar = false
+var icon_name = "market_influence_icon"
 
 enum {
 	STILL,
@@ -26,7 +27,7 @@ func _ready():
 #	setup()
 
 	max_value = 100
-	value = 50
+	value = 100
 	fill_color = Color(.8, .7, 0, 1)
 	change_color = Color(1, 1, 0, 1)
 	border_color = Color(1, 1, .8, 1)
@@ -66,12 +67,20 @@ func setup():
 	new_style_change_fill.border_width_top = 3
 	$Bars/ChangeBar.add_theme_stylebox_override("fill", new_style_change_fill)
 	
+	$LeftIcon.texture = load("res://Assets/Art/Icons/" + icon_name + ".png")
+	$RightIcon.texture = load("res://Assets/Art/Icons/" + icon_name + ".png")
+	
 	if not left_to_right:
 		$Bars/ChangeBar.fill_mode = 1
 		$Bars/ProgressBar.fill_mode = 1
+		$LeftIcon.visible = true
+		$RightIcon.visible = false
 		
 	if is_middle_bar:
 		$Bars/ChangeBar.visible = false
+	
+#	$Count/Backround.size.x = size.y
+#	$Count/Backround.size.y = size.y
 
 func update_animation(delta):
 	match state:
@@ -114,3 +123,21 @@ func update_animation(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	update_animation(delta)
+
+
+
+
+func _on_progress_bar_mouse_entered():
+	$Bars/ProgressBar.show_percentage = true
+
+
+func _on_progress_bar_mouse_exited():
+	$Bars/ProgressBar.show_percentage = false
+
+
+func _on_bars_mouse_entered():
+	print("HAAAAAAAAAAAAAA")
+
+
+func _on_mouse_entered():
+	print("BAAAAAAAAAAAAAA")

@@ -1,5 +1,22 @@
 {
-	"event0.0": ["Event 0 !", {"event1.0" : "Go to event 1.0 ->", "event1.1" : "Go to event 1.1 ->"}],
-	"event1.0": ["-> Event 1.0 !", {"event0.0" : "Go to event 0 <-"}],
-	"event1.1": ["-> Event 1.1 !", {"event0.0" : "Go to event 0 <-"}],
+	"events": {
+		"event0.0": ["narrative", {"event1.0": "Go to event 1.0 ->", "event1.1" : "Go to event 1.1 ->"}],
+		"event1.0": ["narrative", {"event0.0": "Go to event 0 <-", "event2.0": "Go to event 2"}],
+		"event1.1": ["narrative", {"event0.0": "Go to event 0 <-", "event2.0": "Go to event 2"}],
+		"event2.0": ["narrative", {"event3.0": "Go to event 3 (cards !!!)"}],
+		"event3.0": ["conflict", {"event4.0": "", "event4.1" : ""}],
+		"event4.0": ["narrative", {"event0.0": "Go to event 0 <-"}],
+		"event4.1": ["narrative", {"event0.0": "Go to event 0 <-"}],
+	},
+	"narrative": {
+		"event0.0": ["Event 0 !"],
+		"event1.0": ["-> Event 1.0 !"],
+		"event1.1": ["-> Event 1.1 !"],
+		"event2.0": ["Texte de l'événement 2.0 ! [i]Et en italique ![\i]"],
+		"event4.0": ["[b] DÉFAITE... [\b]"],
+		"event4.1": ["[b] VICTOIRE ! [\b]"],
+	},
+	"conflict": {
+		"event3.0": ["ECONOMICAL_CONFLICT", "TOITSU"]
+	}
 }

@@ -27,7 +27,7 @@ var CardNumb = 0
 var debug_focus
 var OvalAngleVector = Vector2()
 
-var middle_bar = true
+var middle_bar = false
 
 @onready var action_list = ACTION_DATABASE.ACTION_DATA[conflict_type]
 
@@ -58,11 +58,22 @@ func _ready():
 	randomize()
 	$Deck/Outline.scale *= CardSize/$Deck/Outline.texture.get_size()
 	$Cards.size = Vector2(get_viewport_rect().size)
+	
+	$UIContainer/UserInterface/TopBars/RightBar.icon_name = "market_influence_icon"
+	$UIContainer/UserInterface/TopBars/LeftBar.icon_name = "market_influence_icon"
+	$UIContainer/UserInterface/BottomBars/RightBar.icon_name = "cohesion_icon"
+	$UIContainer/UserInterface/BottomBars/LeftBar.icon_name = "cohesion_icon"
+	$UIContainer/UserInterface/MiddleBars/RightBar.icon_name = "money_icon"
+	$UIContainer/UserInterface/MiddleBars/LeftBar.icon_name = "money_icon"
+	
 	$UIContainer/UserInterface/BottomBars/RightBar.left_to_right = false
-	$UIContainer/UserInterface/BottomBars/RightBar.setup()
 	$UIContainer/UserInterface/MiddleBars/RightBar.left_to_right = false
-	$UIContainer/UserInterface/MiddleBars/RightBar.setup()
 	$UIContainer/UserInterface/TopBars/RightBar.left_to_right = false
+	$UIContainer/UserInterface/MiddleBars/LeftBar.setup()
+	$UIContainer/UserInterface/BottomBars/LeftBar.setup()
+	$UIContainer/UserInterface/TopBars/LeftBar.setup()
+	$UIContainer/UserInterface/MiddleBars/RightBar.setup()
+	$UIContainer/UserInterface/BottomBars/RightBar.setup()
 	$UIContainer/UserInterface/TopBars/RightBar.setup()
 	
 	if middle_bar:

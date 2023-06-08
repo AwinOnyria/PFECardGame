@@ -7,20 +7,16 @@ enum {
 const ACTION_DATA = {
 	ECONOMICAL_CONFLICT:
 		[
-			[Vector2i(-15, 0), Vector2i(0, -5), Vector2i(0, -5)],
-			[Vector2i(-15, 0), Vector2i(0, -10), Vector2i(0, 0)],
-			[Vector2i(-15, 0), Vector2i(0, 0), Vector2i(0, -10)],
-			[Vector2i(+10, 0), Vector2i(0, +10), Vector2i(0, +10)],
-			[Vector2i(+10, 0), Vector2i(0, +20), Vector2i(0, 0)],
-			[Vector2i(+10, 0), Vector2i(0, 0), Vector2i(0, +20)],
-			[Vector2i(+10, 0), Vector2i(-10, 0), Vector2i(-5, 0)],
-			[Vector2i(+10, 0), Vector2i(-5, 0), Vector2i(-10, 0)],
-			[Vector2i(+5, 0), Vector2i(-15, 0), Vector2i(0, 0)],
-			[Vector2i(+5, 0), Vector2i(0, 0), Vector2i(-15, 0)],
-			[Vector2i(0, 0), Vector2i(0, +15), Vector2i(0, 0)],
-			[Vector2i(0, 0), Vector2i(0, +15), Vector2i(0, 0)],
-			[Vector2i(0, 0), Vector2i(0, 0), Vector2i(0, +15)],
-			[Vector2i(0, 0), Vector2i(0, 0), Vector2i(0, +15)],
+			[Vector2i(-20, 0), Vector2i(0, 0), Vector2i(0, 0)],
+			[Vector2i(-15, 0), Vector2i(-5, 0), Vector2i(-5, 0)],
+			[Vector2i(-15, 0), Vector2i(-10, 0), Vector2i(0, 0)],
+			[Vector2i(-15, 0), Vector2i(0, 0), Vector2i(-10, 0)],
+			[Vector2i(-10, 0), Vector2i(-10, 0), Vector2i(-5, 0)],
+			[Vector2i(-10, 0), Vector2i(-5, 0), Vector2i(-10, 0)],
+			[Vector2i(-10, 0), Vector2i(0, 0), Vector2i(-15, 0)],
+			[Vector2i(-10, 0), Vector2i(-15, 0), Vector2i(0, 0)],
+			[Vector2i(-5, 0), Vector2i(-15, 0), Vector2i(-10, 0)],
+			[Vector2i(-5, 0), Vector2i(-10, 0), Vector2i(-15, 0)],
 		],
 	POLITICAL_CONFLICT:
 		[

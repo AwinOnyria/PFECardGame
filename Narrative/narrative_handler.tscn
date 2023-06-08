@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfns2e6lymbop"]
 
 [ext_resource type="Script" path="res://Narrative/narrative_handler.gd" id="1_1q0b2"]
-[ext_resource type="PackedScene" uid="uid://byktk2g0wto51" path="res://Narrative/narrative_scene.tscn" id="2_my2b8"]
+[ext_resource type="PackedScene" uid="uid://b10l5bq3380g2" path="res://Narrative/narrative_scene.tscn" id="2_my2b8"]
 
 [node name="NarrativeHandler" type="CanvasLayer"]
 script = ExtResource("1_1q0b2")
