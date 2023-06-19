@@ -74,13 +74,21 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 80
 
+[node name="ContinueButton" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_52q3y")
+theme_override_font_sizes/font_size = 60
+text = "   CONTINUER   "
+
 [node name="RestartButton" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_52q3y")
 theme_override_font_sizes/font_size = 60
 text = "   RESTART   "
 
 [node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_52q3y")
 theme_override_font_sizes/font_size = 60
@@ -106,5 +114,6 @@ libraries = {
 "": SubResource("AnimationLibrary_r63fy")
 }
 
+[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -12,9 +12,9 @@
 		"event0.0": ["Event 0 !"],
 		"event1.0": ["-> Event 1.0 !"],
 		"event1.1": ["-> Event 1.1 !"],
-		"event2.0": ["Texte de l'événement 2.0 ! [i]Et en italique ![\i]"],
-		"event4.0": ["[b] DÉFAITE... [\b]"],
-		"event4.1": ["[b] VICTOIRE ! [\b]"],
+		"event2.0": ["Texte de l'événement 2.0 ! [font_size=100][i]Et en italique ![/i][/font_size]"],
+		"event4.0": ["[b] DÉFAITE... [/b]"],
+		"event4.1": ["[b] VICTOIRE ! [/b]"],
 	},
 	"conflict": {
 		"event3.0": ["ECONOMICAL_CONFLICT", "TOITSU"]

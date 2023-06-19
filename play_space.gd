@@ -6,16 +6,17 @@ enum {
 	INTERNAL_CONFLICT,
 }
 
+var event_tag = ""
 var conflict_type = ECONOMICAL_CONFLICT
 
 const CardBase = preload("res://Cards/card_base.tscn")
-const PlayerHand = preload("res://Gameplay/Player_Hand.gd")
+#const PlayerHand = preload("res://Gameplay/Player_Hand.gd")
 const GameOverScreen = preload("res://GUI/game_over_screen.tscn")
 const ACTION_DATABASE = preload("res://Gameplay/actions_database.gd")
 const CardSize = Vector2(250, 350)
 var CardSelected
-@onready var DeckSize = PlayerHand.Deck.size()
-@onready var Deck = PlayerHand.Deck.duplicate()
+var DeckSize = 0
+var Deck = []
 
 @onready var CenterHandOval = Vector2(get_viewport().size) * Vector2(0.5, 1.25)
 @onready var HorRad = get_viewport().size.x * 0.45
