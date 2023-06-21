@@ -99,6 +99,7 @@ stream = ExtResource("4_3l2l7")
 
 [node name="WinMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_cbn8o")
+volume_db = -14.054
 
 [node name="Penguin" type="Sprite2D" parent="."]
 visible = false

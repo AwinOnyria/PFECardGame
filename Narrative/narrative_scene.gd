@@ -13,6 +13,8 @@ func _ready():
 	var event_data = json_object.get_data()["events"][event_tag]
 	var text_data = json_object.get_data()["narrative"][event_tag]
 	$Background/Columns/Rows/Core/CoreText.text = text_data[0]
+	if not text_data[1].is_empty():
+		$"..".deck = text_data[1].duplicate()
 	for tag in event_data[1].keys():
 		var new_button = narrative_button.instantiate()
 		new_button.button_tag = tag

@@ -306,3 +306,7 @@ func handle_player_lose():
 	add_child(game_over)
 	game_over.set_title()
 
+
+
+func _on_cheat_button_pressed():
+	handle_player_win() # Replace with function body.

@@ -219,7 +219,7 @@ script = ExtResource("14_8628t")
 
 [node name="Rows" type="VBoxContainer" parent="Buttons"]
 layout_mode = 2
-theme_override_constants/separation = 100
+theme_override_constants/separation = 40
 
 [node name="EndTurn" type="Button" parent="Buttons/Rows"]
 layout_mode = 2
@@ -231,6 +231,11 @@ layout_mode = 2
 text = "Défausser ses cartes
 coût : 1"
 
+[node name="CheatButton" type="Button" parent="Buttons/Rows"]
+layout_mode = 2
+text = "Gagner la partie
+ "
+
 [node name="Energy" type="Label" parent="."]
 offset_left = 32.0
 offset_top = 1038.0
@@ -240,12 +245,21 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("15_t2x2t")
 text = "Énergie : 3/3"
 
+[node name="FIXXXXXXXX" type="TextureRect" parent="."]
+offset_left = 1185.0
+offset_top = 79.0
+offset_right = 1911.0
+offset_bottom = 208.0
+texture = ExtResource("1_ggn8o")
+expand_mode = 1
+
 [node name="Blocker" type="TextureRect" parent="."]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 mouse_filter = 0
 texture = SubResource("GradientTexture2D_yswik")
 
 [connection signal="pressed" from="Buttons/Rows/EndTurn" to="Buttons" method="_on_end_turn_pressed"]
 [connection signal="pressed" from="Buttons/Rows/Discard" to="Buttons" method="_on_discard_pressed"]
+[connection signal="pressed" from="Buttons/Rows/CheatButton" to="." method="_on_cheat_button_pressed"]
